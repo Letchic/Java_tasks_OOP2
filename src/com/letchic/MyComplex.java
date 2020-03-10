@@ -52,20 +52,6 @@ public class MyComplex {
         return this.real==real&&this.image==image;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        MyComplex myComplex = (MyComplex) o;
-        return Double.compare(myComplex.real, real) == 0 &&
-                Double.compare(myComplex.image, image) == 0;
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(real, image);
-    }
-
     public double magnitude (){
         return Math.sqrt(Math.pow(real,2)+Math.pow(image,2));
     }
@@ -109,4 +95,25 @@ public class MyComplex {
         return divide;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        MyComplex myComplex = (MyComplex) o;
+
+        if (Double.compare(myComplex.real, real) != 0) return false;
+        return Double.compare(myComplex.image, image) == 0;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = 17;
+        long temp;
+        temp = Double.doubleToLongBits(real);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        temp = Double.doubleToLongBits(image);
+        result = 31 * result + (int) (temp ^ (temp >>> 32));
+        return result;
+    }
 }

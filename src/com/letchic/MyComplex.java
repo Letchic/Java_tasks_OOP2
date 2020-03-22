@@ -102,8 +102,8 @@ public class MyComplex {
 
         MyComplex myComplex = (MyComplex) o;
 
-        if (Double.compare(myComplex.real, real) != 0) return false;
-        return Double.compare(myComplex.image, image) == 0;
+        if (Math.abs(myComplex.real-real) > 0.00001) return false;
+        return Math.abs(myComplex.image - image) <= 0.00001;
     }
 
     @Override

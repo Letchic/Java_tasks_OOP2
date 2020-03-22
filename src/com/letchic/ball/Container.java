@@ -1,4 +1,4 @@
-package com.letchic;
+package com.letchic.ball;
 
 public class Container {
     private int x1;

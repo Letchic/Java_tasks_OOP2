@@ -1,4 +1,4 @@
-package com.letchic;
+package com.letchic.ball;
 
 public class Ball {
     private float x;
@@ -80,11 +80,11 @@ public class Ball {
 
         Ball ball = (Ball) o;
 
-        if (Float.compare(ball.x, x) != 0) return false;
-        if (Float.compare(ball.y, y) != 0) return false;
+        if (Math.abs(ball.x-x) > 0.00001) return false;
+        if (Math.abs(ball.y-y) > 0.00001) return false;
         if (radius != ball.radius) return false;
-        if (Float.compare(ball.xDelta, xDelta) != 0) return false;
-        return Float.compare(ball.yDelta, yDelta) == 0;
+        if (Math.abs(ball.xDelta-xDelta) > 0.00001) return false;
+        return Math.abs(ball.yDelta - yDelta) <= 0.00001;
     }
 
     @Override
